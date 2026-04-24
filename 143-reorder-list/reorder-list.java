@@ -9,35 +9,40 @@
  * }
  */
 class Solution {
-    public void reorderList(ListNode head) {
-        if(head==null)return;
+    public ListNode reverse(ListNode head){
+        if(head==null)return head;
+        ListNode prev=null;
+        ListNode curr=head;
+        ListNode forward=null;
 
-        ArrayList<Integer>li=new ArrayList<>();
-        ListNode temp=head;
-        while(temp!=null){
-            li.add(temp.val);
-            temp=temp.next;
+        while(curr!=null){
+            forward=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=forward;
         }
-        ArrayList<Integer>res=new ArrayList<>();
-        int i=0;
-        int j=li.size()-1;
-        while(i<=j){
-            if(i==j){
-                res.add(li.get(i));
-            }
-            else{
-                res.add(li.get(i));
-                res.add(li.get(j));
-            }
-            i++;
-            j--;
+        return prev;
+    }
+    public void reorderList(ListNode head) {
+        ListNode slow=head;
+        ListNode fast=head;
+        while(fast.next!=null && fast.next.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
         }
+        ListNode second=reverse(slow.next);
+        slow.next=null;
         
-        temp=head;
-        int k=0;
-        while(temp!=null){
-            temp.val=res.get(k++);
-            temp=temp.next;
+        ListNode first=head;
+        while(second!=null){
+            ListNode t1=first.next;
+            ListNode t2=second.next;
+
+            first.next=second;
+            second.next=t1;
+
+            second=t2;
+            first=t1;
         }
     }
 }
