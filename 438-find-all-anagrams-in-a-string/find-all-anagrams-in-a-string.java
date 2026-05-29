@@ -16,7 +16,7 @@ class Solution {
             if(i>=k){
                 win[s.charAt(i-k)-'a']--;
             }
-            if(i>=k-1 && Arrays.equals(win,pfreq)){
+            if(Arrays.equals(win,pfreq)){
                 li.add(i-k+1);
             }
         }
