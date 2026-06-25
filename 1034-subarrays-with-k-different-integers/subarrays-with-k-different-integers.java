@@ -10,7 +10,7 @@ class Solution {
             map.put(nums[end],map.getOrDefault(nums[end],0)+1);
             while(map.size()>k){
                 int left=nums[start];
-                map.put(left,map.get(left)-1);
+                map.put(left,map.getOrDefault(left,0)-1);
                 if(map.get(left)==0){
                     map.remove(left);
                 }
