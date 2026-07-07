@@ -9,19 +9,19 @@ class Solution {
 
         while(s<=e){
             int m=s+(e-s)/2;
-            int daysneeded=1;
+            int d=1;
             int currw=0;
 
             for(int w:weights){
-                if(currw+w>m){
-                    daysneeded++;
+                if(w+currw>m){
+                    d++;
                     currw=w;
                 }
                 else{
                     currw+=w;
                 }
             }
-            if(daysneeded<=days){
+            if(d<=days){
                 e=m-1;
             }
             else{
