@@ -4,19 +4,18 @@ class Solution {
     }
     public int solve(int[]nums,int goal){
         if(goal<0)return 0;
-        int left=0;
-        int sum=0;
-        int cnt=0;
 
-        for(int right=0;right<nums.length;right++){
-            sum+=nums[right];
+        int start=0;
+        int cnt=0;
+        int sum=0;
+        for(int end=0;end<nums.length;end++){
+            sum+=nums[end];
 
             while(sum>goal){
-                sum-=nums[left];
-                left++;
+                sum-=nums[start];
+                start++;
             }
-
-            cnt+=right-left+1;
+            cnt+=end-start+1;
         }
         return cnt;
     }
