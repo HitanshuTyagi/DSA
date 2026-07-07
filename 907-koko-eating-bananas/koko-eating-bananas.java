@@ -5,6 +5,7 @@ class Solution {
         for(int p:piles){
             e=Math.max(e,p);
         }
+
         while(s<=e){
             int m=s+(e-s)/2;
             long hrs=0;
@@ -12,6 +13,7 @@ class Solution {
             for(int p:piles){
                 hrs+=(p+m-1)/m;
             }
+
             if(hrs<=h){
                 e=m-1;
             }
