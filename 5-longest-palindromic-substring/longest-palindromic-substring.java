@@ -14,11 +14,11 @@ class Solution {
         }
         return s.substring(start,end+1);
     }
-    static int solve(String s,int i,int j){
-        while(i>=0 && j<s.length() && s.charAt(i)==s.charAt(j)){
-            i--;
-            j++;
+    static int solve(String s,int l,int r){
+        while(l>=0 && r<s.length() && s.charAt(l)==s.charAt(r)){
+            l--;
+            r++;
         }
-        return j-i-1;
+        return r-l-1;
     }
 }
